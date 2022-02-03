@@ -33,7 +33,7 @@ MOTIVATION
 
 I love benchmarking and inspecting performance metrics of computers. Its no different for my raspberry,
 but for various reasons i cant use the tools i usually do (see "other platforms").
-I specifically developed cpufrequi to compare the behavior of cpufreq governors "schedutil" and "ondemand" with various settingsl.
+I specifically developed cpufrequi to compare the behavior of cpufreq governors "schedutil" and "ondemand" with various settings.
 
 
 
