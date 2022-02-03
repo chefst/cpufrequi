@@ -33,7 +33,7 @@ MOTIVATION
 
 I love benchmarking and inspecting performance metrics of computers. Its no different for my raspberry,
 but for various reasons i cant use the tools i usually do (see "other platforms").
-I specifically developed cpufrequi to compare the behavior of cpufreq governors "schedutil" and "ondemand"
+I specifically developed cpufrequi to compare the behavior of cpufreq governors "schedutil" and "ondemand" with various settingsl.
 
 
 
@@ -47,14 +47,16 @@ use https://linux.die.net/man/1/cpupower-monitor and https://github.com/lm-senso
 In theory, cpufrequi could be used for any cpu platform supporting cpufreq-stats and hwmon.
 In reality though, there are some things to consider:
 
-* Intel
+* Intel:
 Current Intel CPUs (2022) all use the intel p state cpufreq driver. Afaik they dont support cpufreq-stats at all.
 
-* AMD
-Current AMD CPUs (2022) use acpi-cpufreq and expose cpufreq-stats. On at least Ryzen 2700X though, it contains only 3 power states:
+* AMD:
+Current AMD CPUs (2022) use acpi-cpufreq and expose cpufreq-stats. On at least Ryzen 2700X though, it contains only 3 clock states:
+```
 3700000
 3200000
 2200000
+```
 Actually the CPU clocks very dynamically from 1.8GHz to up to 4.3 GHz depending on BIOS settings regarding Boost / Precision Boost Overdrive.
 So the tool just doesnt make very much sense in this context, as the clock stats dont really reflect whats going on in the system (e.g. no boost info at all)
 
