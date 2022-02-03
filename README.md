@@ -1,5 +1,5 @@
-README
-======
+cpufrequi for raspberry pi
+==========================
 
 ![cpufrequi sample](cpufrequi-sample.png)
 
@@ -34,6 +34,24 @@ MOTIVATION
 I love benchmarking and inspecting performance metrics of computers. Its no different for my raspberry,
 but for various reasons i cant use the tools i usually do (see "other platforms").
 I specifically developed cpufrequi to compare the behavior of cpufreq governors "schedutil" and "ondemand" with various settings.
+
+
+USAGE
+=====
+
+```
+# cpufrequi -h
+Usage of cpufrequi:
+  -i int
+        interval in ms (default 1000)
+  -s int
+        size of history (default 1000)
+  -w int
+        size of avg window (default 5)
+```
+For now, the history switch isnt useful. The idea is to be able to change the interval and window size at runtime in the future.
+Right now you can only set it via flags when starting the program, so you would never need more history than the window size.
+Setting the history size lower than the window size will crash the program :]
 
 
 
