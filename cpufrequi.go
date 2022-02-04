@@ -207,15 +207,8 @@ func populateGauges(freqTableFile *os.File) {
 		durNew = valuesNew[i][1]
 		durOld = valuesOld[i][1]
 		durWindow = durNew - durOld
-
 		percentFloat := float64(durWindow) / float64(float64(totalTimeInInterval)/100.0)
-
-		if totalTimeInInterval < 100 {
-			v.Percent = 0
-		} else {
-			v.Percent = int(math.Round(percentFloat))
-		}
-
+		v.Percent = int(math.Round(percentFloat))
 		// v.Title = strconv.Itoa(freqNew / 1000)
 		// v.TitleStyle = v.LabelStyle
 		v.SetRect(0, i+5, 50, i+1+5)
