@@ -59,9 +59,9 @@ OTHER PLATFORMS
 ===============
 
 TL;DR: use 
-https://linux.die.net/man/1/cpupower-monitor
-https://www.linux.org/docs/man8/turbostat.html
-https://github.com/lm-sensors/lm-sensors
+* https://linux.die.net/man/1/cpupower-monitor
+* https://www.linux.org/docs/man8/turbostat.html
+* https://github.com/lm-sensors/lm-sensors
 
 
 In theory, cpufrequi could be used for any cpu platform supporting cpufreq-stats and hwmon.
@@ -77,9 +77,7 @@ build some kind of average over all cores.
 For these systems i suggest to use cpupower-monitor, which displays averages for cpu clocks per core
 in the Mperf section and/or turbostat which displays a whole lot of stuff
 
-https://linux.die.net/man/1/cpupower-monitor
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/power/cpupower/
-https://www.linux.org/docs/man8/turbostat.html
+
 
 
 
