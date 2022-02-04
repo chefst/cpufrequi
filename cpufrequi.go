@@ -127,7 +127,7 @@ func populateCurrentFreqParagraph(currentFreqFile *os.File) {
 	scanner := bufio.NewScanner(currentFreqFile)
 	for scanner.Scan() {
 		freqInt, _ := strconv.Atoi(scanner.Text())
-		currentFreqParagraph.Text = "Current Freq (MHz): " + strconv.Itoa(freqInt/1000)
+		currentFreqParagraph.Text = "Current Frq. (MHz): " + strconv.Itoa(freqInt/1000)
 	}
 }
 
