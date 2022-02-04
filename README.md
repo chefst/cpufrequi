@@ -70,7 +70,7 @@ In reality though, there are some things to consider:
 * boost technology on modern AMD/Intel CPUs is not reflected in cpufreq-stats
 * AMD/Intel CPUs use seperate clocks for each logical core
 
-So on systems with different clocks for each core, the tool just doesnt make sense.
+On systems with different clocks for each core, the tool just doesnt make sense in its current state.
 You would really need an instance of the tool for each logical core, or have the tool
 build some kind of average over all cores.
 
