@@ -27,6 +27,11 @@ func main() {
 	flag.IntVar(&windowSize, "w", 5, "size of avg window")
 	flag.Parse()
 
+	if historySize < windowSize {
+		fmt.Println("dont use history size < window size")
+		os.Exit(1)
+	}
+
 	if err := ui.Init(); err != nil {
 		log.Fatalf("failed to initialize termui: %v", err)
 	}

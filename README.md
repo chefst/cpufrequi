@@ -51,7 +51,6 @@ Usage of cpufrequi:
 ```
 For now, the history switch isnt useful. The idea is to be able to change the interval and window size at runtime in the future.
 Right now you can only set it via flags when starting the program, so you would never need more history than the window size.
-Setting the history size lower than the window size will crash the program :]
 
 
 
