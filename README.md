@@ -4,8 +4,8 @@ cpufrequi for raspberry pi
 ![cpufrequi sample](cpufrequi-sample.png)
 
 cpufrequi is a tool to display cpu clock averages over a chosen time window on a 
-Raspberry Pi 4 Model B with current kernels (developed on 5.10.x)
-(https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
+Raspberry Pi 4 Model B (https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
+running a modern linux kernel that exposes the relevant files in sysfs (developed and tested on 5.10.x)
 
 The data is obtained from
 
