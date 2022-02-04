@@ -217,7 +217,7 @@ func populateGauges(freqTableFile *os.File) {
 		// v.Title = strconv.Itoa(freqNew / 1000)
 		// v.TitleStyle = v.LabelStyle
 		v.SetRect(0, i+5, 50, i+1+5)
-		v.Label = fmt.Sprintf("%4d MHz %6.2f", freq/1000, percentFloat)
+		v.Label = fmt.Sprintf("%4d MHz %6.2f%%", freq/1000, percentFloat)
 		v.Border = false
 		i++
 	}
