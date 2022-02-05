@@ -1,0 +1,11 @@
+name: build-test-cpufrequi
+on: [push]
+jobs:
+  build-test-benchmark:
+    name: build release for arm64
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+      - run: cat /proc/cpuinfo
+      - run: go test -bench=.
