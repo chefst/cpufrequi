@@ -1,5 +1,8 @@
-name: build-cpufrequi
-on: [push]
+name: build-release-cpufrequi
+# on: [push]
+on:
+  release:
+    types: [created]
 jobs:
   build-release-arm64:
     name: build release for arm64
