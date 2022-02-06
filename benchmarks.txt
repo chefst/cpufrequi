@@ -1,6 +1,3 @@
-change:?
-specs:
-
 raspberry 1.8ghz performance governor
 Linux cp4 5.10.92+ #3 SMP Thu Jan 27 02:04:24 CET 2022 aarch64 GNU/linux
 
@@ -10,35 +7,13 @@ go test -bench=.
 goos: linux
 goarch: arm64
 pkg: cpufrequi
-BenchmarkRenderEmpty-4                     11758            102951 ns/op
-BenchmarkRenderFilled-4                     2286            503883 ns/op
-BenchmarkUITempPara-4                      81669             14614 ns/op
-BenchmarkUITempCurFreqPara-4              102711             11656 ns/op
-BenchmarkUISettingsPara-4                1444104               816.7 ns/op
-BenchmarkUIFreqGauges-4                    30531             37709 ns/op
-BenchmarkFreqValuesFromFile-4              43516             27531 ns/op
-BenchmarkLoop-4                             1699            618537 ns/op
+BenchmarkRenderEmpty-4                     11511            102124 ns/op
+BenchmarkRenderFilled-4                     2374            514745 ns/op
+BenchmarkUITempPara-4                      81700             14723 ns/op
+BenchmarkUITempCurFreqPara-4              101492             11632 ns/op
+BenchmarkUISettingsPara-4                1469428               819.8 ns/op
+BenchmarkUIFreqGauges-4                    29206             41222 ns/op
+BenchmarkFreqValuesFromFile-4              42279             27017 ns/op
+BenchmarkLoop-4                             1854            647797 ns/op
 PASS
-ok      cpufrequi       12.216s
-
-
-================================================================================
-change: remove gauge settings paragraph from render tick 
-specs: same
-
-goos: linux
-goarch: arm64
-pkg: cpufrequi
-BenchmarkRenderEmpty-4                     14560             80788 ns/op
-BenchmarkRenderFilled-4                     2836            425188 ns/op
-BenchmarkUITempPara-4                      80582             14830 ns/op
-BenchmarkUITempCurFreqPara-4              101173             11670 ns/op
-BenchmarkUISettingsPara-4                1471551               819.0 ns/op
-BenchmarkUIFreqGauges-4                    32017             37509 ns/op
-BenchmarkFreqValuesFromFile-4              45582             26457 ns/op
-BenchmarkLoop-4                             2323            541438 ns/op
-PASS
-ok      cpufrequi       12.347s
-
-================================================================================
-
+ok      cpufrequi       12.348s
