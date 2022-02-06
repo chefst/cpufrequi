@@ -18,7 +18,7 @@ import (
 var freqGauges []*widgets.Gauge
 var temperatureParagraph, currentFreqParagraph, gaugeSettingsParagraph *widgets.Paragraph
 var allDrawables []ui.Drawable
-var interval, historySize, windowSize, temperature int
+var interval, historySize, windowSize, temperature, termWidth, termHeight int
 var history [][][]int
 
 func main() {
@@ -74,16 +74,28 @@ func main() {
 
 		switch e.ID {
 		case "<Resize>":
-			renderAll()
-		case "r":
-			renderAll()
+			terminalResized()
 		case "q", "<C-c>":
 			return
 		}
 	}
 }
 
+func terminalResized() {
+	termWidth, termHeight = ui.TerminalDimensions()
+	currentFreqParagraph.SetRect(0, 0, termWidth, 1)
+	temperatureParagraph.SetRect(0, 1, termWidth, 2)
+	gaugeSettingsParagraph.SetRect(0, 3, termWidth, 4)
+	for _, g := range freqGauges {
+		rect := g.GetRect()
+		g.SetRect(rect.Min.X, rect.Min.Y, termWidth, rect.Max.Y)
+	}
+	renderAll()
+}
+
 func setupUIElements(freqTableFile *os.File) {
+
+	termWidth, termHeight = ui.TerminalDimensions()
 
 	// freq table gauges
 	scanner := bufio.NewScanner(freqTableFile)
@@ -95,25 +107,21 @@ func setupUIElements(freqTableFile *os.File) {
 
 	// current freq graph
 	currentFreqParagraph = widgets.NewParagraph()
-	currentFreqParagraph.SetRect(0, 0, 50, 1)
+	currentFreqParagraph.SetRect(0, 0, termWidth, 1)
 	currentFreqParagraph.Border = false
 	allDrawables = append(allDrawables, currentFreqParagraph)
 
 	// temperature text
 	temperatureParagraph = widgets.NewParagraph()
-	temperatureParagraph.SetRect(0, 1, 50, 2)
+	temperatureParagraph.SetRect(0, 1, termWidth, 2)
 	temperatureParagraph.Border = false
 	allDrawables = append(allDrawables, temperatureParagraph)
 
 	// gauge settings
 	gaugeSettingsParagraph = widgets.NewParagraph()
-	gaugeSettingsParagraph.SetRect(0, 3, 50, 4)
+	gaugeSettingsParagraph.SetRect(0, 3, termWidth, 4)
 	gaugeSettingsParagraph.Border = false
-	// allDrawables = append(allDrawables, gaugeSettingsParagraph)
-	// draw / pop once for now
-	populateGaugeSettingsParagraph()
-	ui.Render(gaugeSettingsParagraph)
-
+	allDrawables = append(allDrawables, gaugeSettingsParagraph)
 }
 
 func populateTemperatureParagraph(temperatureFile *os.File) {
@@ -144,7 +152,7 @@ func populateGaugeSettingsParagraph() {
 func populateUI(freqTableFile, temperatureFile, currentFreqFile *os.File) {
 	populateCurrentFreqParagraph(currentFreqFile)
 	populateTemperatureParagraph(temperatureFile)
-	// populateGaugeSettingsParagraph()
+	populateGaugeSettingsParagraph()
 	populateGauges(freqTableFile)
 	renderAll()
 }
@@ -216,7 +224,7 @@ func populateGauges(freqTableFile *os.File) {
 		v.Percent = int(math.Round(percentFloat))
 		// v.Title = strconv.Itoa(freqNew / 1000)
 		// v.TitleStyle = v.LabelStyle
-		v.SetRect(0, i+5, 50, i+1+5)
+		v.SetRect(0, i+5, termWidth, i+1+5)
 		v.Label = fmt.Sprintf("%4d MHz %6.2f%%", freq/1000, percentFloat)
 		v.Border = false
 		i++
@@ -225,6 +233,4 @@ func populateGauges(freqTableFile *os.File) {
 
 func renderAll() {
 	ui.Render(allDrawables...)
-	// type assertion like
-	// gauge := allDrawables[0].(*widgets.Gauge)
 }
