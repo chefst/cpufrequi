@@ -7,11 +7,15 @@ jobs:
   build-release-arm64:
     name: build release for arm64
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos: [linux]
+        goarch: ["386", amd64]
     steps:
       - uses: actions/checkout@v2
       - uses: wangyoucao577/go-release-action@v1.24
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          goos: linux
-          goarch: arm64
+          goos: ${{ matrix.goos }}
+          goarch: ${{ matrix.goarch }}
           extra_files: LICENSE README.md
