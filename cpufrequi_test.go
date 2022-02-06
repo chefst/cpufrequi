@@ -23,6 +23,7 @@ func init() {
 	temperatureFile, _ = os.Open("/sys/devices/platform/soc/soc:firmware/raspberrypi-hwmon/hwmon/hwmon1/device/hwmon/hwmon1/subsystem/hwmon0/temp1_input")
 	currentFreqFile, _ = os.Open("/sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq")
 
+	termWidth, termHeight = 50, 50
 	setupUIElements(freqTableFile)
 }
 

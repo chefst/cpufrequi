@@ -55,7 +55,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
+	termWidth, termHeight = ui.TerminalDimensions()
 	setupUIElements(freqTableFile)
 
 	go func() {
@@ -94,8 +94,6 @@ func terminalResized() {
 }
 
 func setupUIElements(freqTableFile *os.File) {
-
-	termWidth, termHeight = ui.TerminalDimensions()
 
 	// freq table gauges
 	scanner := bufio.NewScanner(freqTableFile)
