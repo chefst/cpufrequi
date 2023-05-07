@@ -1,8 +1,8 @@
-name: build-test-cpufrequi
+ame: build-test-cpufrequi
 on: [push]
 jobs:
   build-test-benchmark:
-    name: build release for arm64
+    name: build release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

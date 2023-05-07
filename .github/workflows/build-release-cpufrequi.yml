@@ -4,8 +4,8 @@ on:
   release:
     types: [created]
 jobs:
-  build-release-arm64:
-    name: build release for arm64
+  build-release:
+    name: build release
     runs-on: ubuntu-latest
     strategy:
       matrix:
