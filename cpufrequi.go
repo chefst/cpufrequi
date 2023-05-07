@@ -46,7 +46,7 @@ func main() {
 		panic(err)
 	}
 
-	temperatureFile, err := os.Open("/sys/devices/platform/soc/soc:firmware/raspberrypi-hwmon/hwmon/hwmon1/device/hwmon/hwmon1/subsystem/hwmon0/temp1_input")
+	temperatureFile, err := os.Open("/sys/class/thermal/thermal_zone0/temp")
 	if err != nil {
 		panic(err)
 	}

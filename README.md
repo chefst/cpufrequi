@@ -21,10 +21,10 @@ It also displays the current clock according to
 /sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq
 ```
 
-Lastly, the current cpu temperature is read from
+current cpu temperature is read from
 
 ```
-/sys/devices/platform/soc/soc:firmware/raspberrypi-hwmon/hwmon/hwmon1/device/hwmon/hwmon1/subsystem/hwmon0/temp1_input
+/sys/class/thermal/thermal_zone0/temp
 ```
 
 
